@@ -8,7 +8,7 @@ if __name__=="__main__":
     lastLayer = 10
     print("Reading data...")
     X, y = loadData("mnist_test")
-    savedNetwork = loadWeights("weights_and_biases_32")
+    savedNetwork = loadWeights()
     network = Network(-1, 1, batchSize, [firstLayer, 32, lastLayer], savedNetwork)
 
     result = network.forwardPropagate(X)

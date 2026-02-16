@@ -3,7 +3,7 @@ import json
 import os
 
 def loadData(fileName):
-    resourcePath = os.path.join(os.path.abspath(__file__), "../../res/")
+    resourcePath = os.path.join(os.path.dirname(os.path.abspath(__file__)), "../res/")
 
     trainData = os.path.join(resourcePath, f"{fileName}.csv")
 
@@ -22,7 +22,7 @@ def loadMnist(X, y, batchSize):
         yield X[idx], y[idx]
 
 def storeWeights(network):
-    path = os.path.join(os.path.abspath(__file__), "../../res/weights_and_biases.json")
+    path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "../res/weights_and_biases.json")
     data = {
         "size": [len(layer.biases) for layer in network.layers],
         "data": network.getWeightsAndBiases()
@@ -31,6 +31,6 @@ def storeWeights(network):
         json.dump(data, f)
 
 def loadWeights(fileName="weights_and_biases"):
-    path = os.path.join(os.path.abspath(__file__), f"../../res/{fileName}.json")
+    path = os.path.join(os.path.dirname(os.path.abspath(__file__)), f"../res/{fileName}.json")
     with open(path, "r") as f:
         return json.load(f)

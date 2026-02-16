@@ -22,7 +22,7 @@ def predictNumber(X):
     network = Network(-1, 1, batchSize, [firstLayer, 32, lastLayer], savedNetwork)
     result = network.forwardPropagate(np.array(X).reshape(1, -1))
     pred = result.argmax(axis=1)
-    return int(pred)
+    return result.tolist()
 
 if raw_data:
     try:
